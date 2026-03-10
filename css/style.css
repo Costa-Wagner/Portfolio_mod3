@@ -1,0 +1,583 @@
+/* ===========================================================================
+   RESET
+=========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===========================================================================
+   GLOBAL
+=========================================================================== */
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #0f0f0f;
+  color: #00ff9c;
+  line-height: 1.6;
+}
+
+/* Efeito scanlines */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.2) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ===========================================================================
+   NAV
+=========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px;
+  background: #111;
+  border-bottom: 2px solid #00ff9c;
+}
+
+.nav-logo {
+  font-size: 12px;
+  color: #00ff9c;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  font-size: 8px;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #00ff9c;
+}
+
+/* ===========================================================================
+   HEADER / HERO
+=========================================================================== */
+.hero {
+  background: #111;
+  color: white;
+  padding: 120px 10% 60px; /* padding top maior por causa da nav fixa */
+  text-align: center;
+  border-bottom: 2px solid #00ff9c;
+}
+
+.hero h1 {
+  font-size: 28px;
+  letter-spacing: 3px;
+  color: #00ff9c;
+  margin-bottom: 16px;
+}
+
+#saudacao {
+  font-size: 10px;
+  color: #fff;
+  opacity: 0.7;
+}
+
+/* ===========================================================================
+   SEÇÕES
+=========================================================================== */
+.section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 80px 20px;
+}
+
+.section-title {
+  font-size: 16px;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #00ff9c;
+  border-bottom: 2px solid #00ff9c;
+  padding-bottom: 12px;
+}
+
+/* ===========================================================================
+   SOBRE
+=========================================================================== */
+.sobre-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+/* Flip Card */
+.flip-card {
+  width: 200px;
+  height: 260px;
+  perspective: 1000px;
+  flex-shrink: 0;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  border: 2px solid #00ff9c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #111;
+}
+
+.flip-card-front img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  text-align: center;
+  gap: 8px;
+  padding: 16px;
+  font-size: 9px;
+}
+
+.flip-card-back h3 {
+  font-size: 10px;
+  color: #00ff9c;
+  margin-bottom: 8px;
+}
+
+.sobre-texto {
+  flex: 1;
+  min-width: 260px;
+  font-size: 11px;
+  line-height: 2;
+  color: #ccc;
+}
+
+.sobre-texto strong {
+  color: #00ff9c;
+}
+
+.contato-rapido {
+  margin-top: 20px;
+}
+
+.contato-rapido a {
+  font-size: 10px;
+  color: #00ff9c;
+  text-decoration: none;
+  border: 1px solid #00ff9c;
+  padding: 8px 14px;
+  transition: background 0.2s;
+}
+
+.contato-rapido a:hover {
+  background: rgba(0,255,156,0.1);
+}
+
+/* ===========================================================================
+   FORMAÇÃO / CURSOS
+=========================================================================== */
+.formacao-list,
+.cursos-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 750px;
+  margin: auto;
+}
+
+.formacao-list li,
+.cursos-list li {
+  background: #111;
+  border: 1px solid rgba(0,255,156,0.3);
+  border-left: 3px solid #00ff9c;
+  padding: 18px 20px;
+  font-size: 10px;
+}
+
+.formacao-list span,
+.cursos-list span {
+  display: block;
+  font-size: 9px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 6px;
+}
+
+/* ===========================================================================
+   SKILLS
+=========================================================================== */
+.skills-wrap {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.skills-block {
+  flex: 1;
+  min-width: 220px;
+  background: #111;
+  border: 1px solid rgba(0,255,156,0.3);
+  padding: 24px;
+}
+
+.skills-block h3 {
+  font-size: 11px;
+  color: #00ff9c;
+  margin-bottom: 18px;
+}
+
+.subtitulo {
+  font-size: 8px;
+  color: rgba(255,255,255,0.4);
+}
+
+.skills-block ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skills-block li {
+  font-size: 9px;
+  color: #ccc;
+}
+
+/* Cards de hard skills gerados pelo JS */
+.skills-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skill-card {
+  background: #0f0f0f;
+  border: 1px solid #00ff9c;
+  padding: 12px 16px;
+  text-align: center;
+  font-size: 8px;
+  min-width: 80px;
+  transition: transform 0.2s;
+}
+
+.skill-card:hover {
+  transform: translateY(-3px);
+}
+
+.skill-card span {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.skill-card p {
+  color: #ccc;
+  margin-top: 4px;
+}
+
+/* ===========================================================================
+   CARROSSEL
+=========================================================================== */
+.carousel {
+  overflow: hidden;
+  border: 2px solid #00ff9c;
+  padding: 16px 0;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 20s linear infinite;
+}
+
+.carousel:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+.carousel-item {
+  width: 120px;
+  text-align: center;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+
+.carousel-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.carousel-item img:hover {
+  transform: scale(1.2);
+}
+
+.carousel-item span {
+  display: block;
+  font-size: 8px;
+  margin-top: 8px;
+  color: #ccc;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ===========================================================================
+   PROJETOS
+=========================================================================== */
+.filtros-projetos {
+  text-align: center;
+  margin-bottom: 30px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filtros-projetos button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 8px;
+  padding: 10px 18px;
+  background: #111;
+  color: #00ff9c;
+  border: 2px solid #00ff9c;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.filtros-projetos button:hover,
+.filtros-projetos button.ativo {
+  background: #00ff9c;
+  color: #000;
+}
+
+.projetos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.projeto-card {
+  background: #111;
+  border: 2px solid #00ff9c;
+  padding: 24px;
+  width: 300px;
+  font-size: 9px;
+  line-height: 1.8;
+  transition: transform 0.2s;
+}
+
+.projeto-card:hover {
+  transform: translateY(-5px);
+}
+
+.projeto-card h3 {
+  font-size: 10px;
+  color: #00ff9c;
+  margin-bottom: 8px;
+}
+
+.projeto-card h4 {
+  font-size: 8px;
+  color: rgba(255,255,255,0.4);
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.projeto-card p {
+  color: #ccc;
+  margin-bottom: 14px;
+}
+
+.proj-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.btn-proj {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 7px;
+  padding: 8px 12px;
+  background: #000;
+  color: #00ff9c;
+  border: 1px solid #00ff9c;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.btn-proj:hover {
+  background: #00ff9c;
+  color: #000;
+}
+
+/* ===========================================================================
+   CONTATO
+=========================================================================== */
+.social-grid {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.social-btn {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 8px;
+  padding: 14px 20px;
+  border: 2px solid #00ff9c;
+  color: #00ff9c;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.social-btn:hover {
+  background: #00ff9c;
+  color: #000;
+}
+
+/* Formulário */
+.form-contato {
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #111;
+  border: 2px solid rgba(0,255,156,0.4);
+  padding: 30px;
+}
+
+.form-contato h3 {
+  font-size: 11px;
+  color: #00ff9c;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 8px;
+  color: #00ff9c;
+}
+
+.form-group input,
+.form-group textarea {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 9px;
+  background: #0f0f0f;
+  color: #fff;
+  border: 1px solid rgba(0,255,156,0.4);
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #00ff9c;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.8;
+}
+
+#form-feedback {
+  font-size: 9px;
+  line-height: 1.8;
+}
+
+/* ===========================================================================
+   FOOTER
+=========================================================================== */
+.footer {
+  background: #111;
+  border-top: 2px solid #00ff9c;
+  color: white;
+  padding: 40px 10%;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.social-icons img {
+  width: 30px;
+  transition: transform 0.2s;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+
+.footer-info h3 {
+  font-size: 12px;
+  color: #00ff9c;
+  margin-bottom: 8px;
+}
+
+.footer-info p {
+  font-size: 8px;
+  color: rgba(255,255,255,0.4);
+  line-height: 2;
+}
+
+/* ===========================================================================
+   RESPONSIVO
+=========================================================================== */
+@media (max-width: 768px) {
+  .navbar { padding: 12px 20px; }
+  .nav-links { gap: 12px; }
+  .nav-links a { font-size: 6px; }
+  .hero { padding: 100px 20px 40px; }
+  .hero h1 { font-size: 18px; }
+  .sobre-container { flex-direction: column; align-items: center; }
+  .skills-wrap { flex-direction: column; }
+  .projeto-card { width: 100%; }
+}

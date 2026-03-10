@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio - Wagner Costa</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <span class="nav-logo">WGCosta</span>
+    <div class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#formacao">Formação</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#skills">Skills</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="hero">
+    <div class="hero-left">
+      <h1>Wagner Costa</h1>
+      <p id="saudacao"></p>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="section">
+      <h2 class="section-title">Sobre Mim</h2>
+
+      <div class="sobre-container">
+
+        <!-- Flip Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="imagem/imagens/Wagner.Costa.png"
+                   alt="Foto de Wagner Costa"
+                   class="profile-img">
+            </div>
+            <div class="flip-card-back">
+              <h3>WAGNER COSTA</h3>
+              <p>40 anos</p>
+              <p>Casado</p>
+              <p>Engenheiro → Dev</p>
+              <p>DSM · FATEC/SJC</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Texto -->
+        <div class="sobre-texto">
+          <p>Olá! Sou <strong>WAGNER COSTA</strong>, engenheiro com experiência em gestão
+            empresarial, processos administrativos e gestão pública. Iniciante na área de TI,
+            atualmente me dedico aos estudos em <strong>DSM - Desenvolvimento de Software
+            Multiplataforma - FATEC</strong>, com o objetivo de adquirir habilidades práticas
+            e conhecimentos técnicos em TI, integrando-os à minha experiência profissional,
+            a fim de criar soluções funcionais, criativas e bem estruturadas, unindo estética
+            e desempenho.
+          </p>
+          <p style="margin-top:14px;">
+            Este portfólio foi desenvolvido com <strong>HTML, CSS</strong> e
+            <strong>JavaScript</strong>, refletindo meu compromisso em aprender e aplicar
+            boas práticas no desenvolvimento web.
+          </p>
+
+          <div class="contato-rapido">
+            <a href="https://wa.me/5512981056787" target="_blank">📱 (12) 98105-6787</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FORMAÇÃO -->
+    <section id="formacao" class="section">
+      <h2 class="section-title">Formação Acadêmica</h2>
+
+      <ul class="formacao-list">
+        <li>
+          <strong>DSM - Desenvolvimento de Software Multiplataforma</strong>
+          <span>FATEC / São José dos Campos · previsão 2028 · em andamento</span>
+        </li>
+        <li>
+          <strong>Gestão Pública</strong>
+          <span>UNINTER / São José dos Campos · 2020 · concluído</span>
+        </li>
+        <li>
+          <strong>Engenharia de Produção Mecânica</strong>
+          <span>UNITAU / Taubaté · 2011 · concluído</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- CURSOS -->
+    <section id="cursos" class="section">
+      <h2 class="section-title">Cursos Complementares</h2>
+      <!-- preenchido pelo JS -->
+      <ul class="cursos-list" id="lista-cursos"></ul>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2 class="section-title">Skills</h2>
+
+      <div class="skills-wrap">
+
+        <!-- Soft Skills -->
+        <div class="skills-block">
+          <h3>Soft Skills</h3>
+          <ul>
+            <li>Comunicação</li>
+            <li>Trabalho em equipe</li>
+            <li>Resolução de problemas</li>
+            <li>Adaptabilidade</li>
+            <li>Organização</li>
+          </ul>
+        </div>
+
+        <!-- Hard Skills — cards gerados pelo JS -->
+        <div class="skills-block">
+          <h3>Hard Skills <span class="subtitulo">(em aprendizagem)</span></h3>
+          <div class="skills-cards" id="lista-skills"></div>
+        </div>
+
+      </div>
+
+      <!-- Carrossel -->
+      <h3 style="text-align:center; margin: 40px 0 16px;">Tecnologias</h3>
+      <div class="carousel">
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-item"><img src="imagem/logos/Html.png" alt="HTML"><span>HTML</span></div>
+          <div class="carousel-item"><img src="imagem/logos/Css.png" alt="CSS"><span>CSS</span></div>
+          <div class="carousel-item"><img src="imagem/logos/JavaScript.png" alt="JavaScript"><span>JavaScript</span></div>
+          <div class="carousel-item"><img src="imagem/logos/python-logo.png" alt="Python"><span>Python</span></div>
+          <div class="carousel-item"><img src="imagem/logos/GitHub.png" alt="GitHub"><span>GitHub</span></div>
+          <div class="carousel-item"><img src="imagem/logos/Vercel.png" alt="Vercel"><span>Vercel</span></div>
+          <!-- duplicados para loop infinito -->
+          <div class="carousel-item"><img src="imagem/logos/Html.png" alt="HTML"><span>HTML</span></div>
+          <div class="carousel-item"><img src="imagem/logos/Css.png" alt="CSS"><span>CSS</span></div>
+          <div class="carousel-item"><img src="imagem/logos/JavaScript.png" alt="JavaScript"><span>JavaScript</span></div>
+          <div class="carousel-item"><img src="imagem/logos/python-logo.png" alt="Python"><span>Python</span></div>
+          <div class="carousel-item"><img src="imagem/logos/GitHub.png" alt="GitHub"><span>GitHub</span></div>
+          <div class="carousel-item"><img src="imagem/logos/Vercel.png" alt="Vercel"><span>Vercel</span></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PROJETOS -->
+    <section id="projetos" class="section">
+      <h2 class="section-title">Projetos</h2>
+
+      <div class="filtros-projetos">
+        <button onclick="filtrarProjetos('todos', this)" class="ativo">Todos</button>
+        <button onclick="filtrarProjetos('academico', this)">Acadêmico</button>
+        <button onclick="filtrarProjetos('api', this)">API</button>
+      </div>
+
+      <!-- preenchido pelo JS -->
+      <div class="projetos-container" id="lista-projetos"></div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="section">
+      <h2 class="section-title">Contato</h2>
+
+      <div class="social-grid">
+        <a href="https://github.com/Costa-Wagner" target="_blank" class="social-btn">🐙 GitHub</a>
+        <a href="https://linkedin.com/in/wagner-costa-391b0726/" target="_blank" class="social-btn">💼 LinkedIn</a>
+        <a href="https://wa.me/5512981056787" target="_blank" class="social-btn">💬 WhatsApp</a>
+      </div>
+
+      <!-- FORMULÁRIO -->
+      <form id="form-contato" class="form-contato" onsubmit="return validarFormulario(event)">
+        <h3 style="margin-bottom:20px;">Enviar mensagem</h3>
+
+        <div class="form-group">
+          <label for="form-nome">Nome</label>
+          <input type="text" id="form-nome" placeholder="Seu nome completo" />
+        </div>
+
+        <div class="form-group">
+          <label for="form-email">E-mail</label>
+          <input type="email" id="form-email" placeholder="seu@email.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="form-mensagem">Mensagem</label>
+          <textarea id="form-mensagem" rows="5" placeholder="Escreva sua mensagem..."></textarea>
+        </div>
+
+        <div id="form-feedback"></div>
+
+        <button type="submit">Enviar mensagem</button>
+      </form>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="social-icons">
+      <a href="https://github.com/Costa-Wagner" target="_blank" class="icon-circle" aria-label="GitHub">
+        <img src="imagem/logos/GitHub.png" alt="GitHub">
+      </a>
+      <a href="https://linkedin.com/in/wagner-costa-391b0726/" target="_blank" class="icon-circle" aria-label="LinkedIn">
+        <img src="imagem/logos/Linkedin.jpg" alt="LinkedIn">
+      </a>
+      <a href="https://wa.me/5512981056787" target="_blank" class="icon-circle" aria-label="WhatsApp">
+        <img src="imagem/logos/whatsapp.png" alt="WhatsApp">
+      </a>
+    </div>
+    <div class="footer-info">
+      <h3>WGCosta</h3>
+      <p>Em constante aprendizagem.</p>
+      <p>&copy; <span id="ano"></span> - Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+
+</body>
+</html>
