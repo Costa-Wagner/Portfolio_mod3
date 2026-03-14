@@ -16,24 +16,82 @@ if (hora < 12) {
 
 document.getElementById("saudacao").innerText = mensagem;
 
+/* ─── CONTAGEM AUTOMÁTICA DE PROJETOS ─── */
+function atualizarStatProjetos() {
+  const el = document.getElementById("stat-projetos");
+  if (!el) return;
+
+  const total = projetos.length;
+  el.textContent = total + "+";
+}
+
 // ===== ANO AUTOMÁTICO NO FOOTER =====
 document.getElementById("ano").textContent = new Date().getFullYear();
 
-// ===== DADOS — CURSOS =====
+/* ===========================================================================
+CURSOS (array)
+=========================================================================== */
 const cursos = [
   {
     nome: "Escola de Inovadores",
     horas: "40h",
     instituicao: "FATEC",
-    ano: 2025
+    ano: 2025,
+    descricao: "Introdução à linguagem Python, lógica de programação e estruturas básicas.",
+    certificado: "imagem/imagens/CERTIFICADOS/certif_escola_inovadores.jpg",
+    link: "https://inova.cps.sp.gov.br/escola-de-inovadores/"
   },
   {
     nome: "Python Básico",
     horas: "18h",
     instituicao: "Fundação Bradesco",
-    ano: 2025
+    ano: 2025,
+    descricao: "Capacitação em inovação, empreendedorismo e novas tecnologias aplicadas ao mercado.",
+    certificado: "imagem/imagens/CERTIFICADOS/certif_python_basic_bradesco.jpg",
+    link: "https://www.ev.org.br/cursos/linguagem-de-programacao-python-basico"
   }
 ];
+
+/* ════════ MODAL CERTIFICADO ════════ */
+function abrirModal(src) {
+  console.log("Tentando abrir o certificado:", src);
+
+  const overlay = document.getElementById("modal-overlay");
+  const box     = document.getElementById("modal-box");
+  const img     = document.getElementById("modal-img");
+
+  if (!overlay || !box || !img) {
+    console.error("Erro: Elementos do modal não encontrados no HTML.");
+    return;
+  }
+
+  img.src = src;
+
+  // 1. Primeiro muda o display para que o elemento exista no layout
+  overlay.style.display = "block";
+  box.style.display = "flex";
+
+  // 2. Curto delay para o navegador processar a mudança de display e iniciar a transição
+  setTimeout(() => {
+    overlay.classList.add("aberto");
+    box.classList.add("aberto");
+  }, 10);
+}
+
+function fecharModal() {
+  const overlay = document.getElementById("modal-overlay");
+  const box     = document.getElementById("modal-box");
+
+  overlay.classList.remove("aberto");
+  box.classList.remove("aberto");
+
+  // Espera a animação de 0.3s terminar antes de esconder totalmente
+  setTimeout(() => {
+    overlay.style.display = "none";
+    box.style.display = "none";
+    document.getElementById("modal-img").src = "";
+  }, 300);
+}
 
 // ===== GERAR LISTA DE CURSOS =====
 // ② Repetição - percorre o array e cria um item para cada curso
@@ -41,14 +99,24 @@ const listaCursos = document.getElementById("lista-cursos");
 
 for (let i = 0; i < cursos.length; i++) {
   listaCursos.innerHTML += `
-    <li>
-      <strong>${cursos[i].nome} (${cursos[i].horas})</strong>
-      <span>${cursos[i].instituicao} · ${cursos[i].ano}</span>
+    <li class="curso-card">
+      <div class="curso-info">
+        <strong>${cursos[i].nome} (${cursos[i].horas})</strong>
+        <h4>${cursos[i].instituicao} · ${cursos[i].ano}</h4>
+        <p>${cursos[i].descricao}</p>
+      </div>
+      
+      <div class="proj-actions">
+        <button onclick="abrirModal('${cursos[i].certificado}')" class="btn-proj">► Certificado</button>
+        <a href="${cursos[i].link}" target="_blank" class="btn-proj">► Site</a>
+      </div>
     </li>
   `;
 }
 
-// ===== DADOS — SKILLS =====
+/* ===========================================================================
+SKILLS
+=========================================================================== */
 // ② Repetição - array com as habilidades técnicas
 const skills = [
   { nome: "HTML5",      icone: "🌐", nivel: 60 },
@@ -73,12 +141,15 @@ for (let i = 0; i < skills.length; i++) {
   `;
 }
 
-// ===== DADOS — PROJETOS =====
+/* ===========================================================================
+PROJETOS
+=========================================================================== */
 const projetos = [
   {
     nome: "Projeto Portfólio",
     data: "dez/2025",
-    descricao: "Projeto acadêmico (1º sem. FATEC) voltado ao desenvolvimento de um portfólio pessoal, integrando HTML, CSS, JavaScript e Python (Flask).",
+    descricao: "Portfólio pessoal desenvolvido com HTML, CSS, JavaScript e Python (Flask).",
+    semestre: "1º sem. · FATEC",
     categoria: "academico",
     link: "https://portfolio-wagner-nu.vercel.app/",
     github: "https://github.com/Costa-Wagner/portfolio"
@@ -86,7 +157,9 @@ const projetos = [
   {
     nome: "Projeto API — JanoSys",
     data: "dez/2025",
-    descricao: "Projeto acadêmico (1º sem. FATEC) onde atuei como Product Owner da equipe JanoSys, desenvolvendo solução para visualização dos dados do CENSO 2010/2022.",
+    descricao: "Solução digital para facilitar a visualização e interpretação dos dados do CENSO 2010/2022. Atuei como Product Owner da equipe JanoSys.",
+    tipo: "API - Aprendizado por Projeto Integrador - Projeto Acadêmico",
+    semestre: "1º sem. · FATEC",
     categoria: "api",
     link: "https://janosysapi1.vercel.app/",
     github: "https://github.com/janosystime/Janosys-Project"
@@ -94,7 +167,8 @@ const projetos = [
   {
     nome: "Site Pessoal",
     data: "out/2025",
-    descricao: "Projeto acadêmico (1º sem. FATEC) explorando conceitos de desenvolvimento web, experiência do usuário e design digital.",
+    descricao: "Site pessoal explorando conceitos de desenvolvimento web, UX e design digital.",
+    semestre: "1º sem. · FATEC",
     categoria: "academico",
     link: "https://ws-start-ten.vercel.app/",
     github: "https://github.com/Costa-Wagner/WS.start"
@@ -117,6 +191,7 @@ function renderProjetos(filtro) {
         <article class="projeto-card" data-categoria="${projetos[i].categoria}">
           <h3>${projetos[i].nome}</h3>
           <h4>${projetos[i].data}</h4>
+          <h5>${projetos[i].semestre}</h5>
           <p>${projetos[i].descricao}</p>
           <div class="proj-actions">
             <a href="${projetos[i].link}" target="_blank" class="btn-proj">► Ver projeto</a>
@@ -146,7 +221,9 @@ function filtrarProjetos(categoria, btn) {
   renderProjetos(categoria);
 }
 
-// ===== VALIDAÇÃO DO FORMULÁRIO =====
+/* ===========================================================================
+FORMULÁRIO
+=========================================================================== */
 // ③ Função - valida os campos antes de enviar para o Formspree
 async function validarFormulario(event) {
   event.preventDefault();
@@ -209,5 +286,11 @@ async function validarFormulario(event) {
   return false;
 }
 
-// ===== INICIALIZAÇÃO =====
+/* ===========================================================================
+INICIALIZAÇÃO
+=========================================================================== */
 renderProjetos("todos");
+
+setTimeout(function(){
+  atualizarStatProjetos();
+}, 50);

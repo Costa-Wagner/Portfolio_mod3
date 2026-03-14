@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio - Wagner Costa</title>
+  <title>Portfólio - WAGNER COSTA</title>
 
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
 
     <!-- SOBRE -->
     <section id="sobre" class="section">
-      <h2 class="section-title">Sobre Mim</h2>
+      <h2 class="section-title">SOBRE MIM</h2>
 
       <div class="sobre-container">
 
@@ -79,41 +79,78 @@
           <div class="contato-rapido">
             <a href="https://wa.me/5512981056787" target="_blank">📱 (12) 98105-6787</a>
           </div>
+
+          <div class="stats-row">
+            <div class="stat-box">
+              <span class="stat-num" id="stat-projetos">0</span>
+              <span class="stat-label">PROJETOS</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">2º</span>
+              <span class="stat-label">SEM · FATEC</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num" id="stat-cafes">99+</span>
+              <span class="stat-label" id="label-cafes">CAFÉS</span>
+            </div>
+          </div>
         </div>
 
       </div>
-    </section>
+      </section>
 
     <!-- FORMAÇÃO -->
     <section id="formacao" class="section">
-      <h2 class="section-title">Formação Acadêmica</h2>
+      <h2 class="section-title">FORMAÇÃO ACADÊMICA</h2>
 
       <ul class="formacao-list">
         <li>
-          <strong>DSM - Desenvolvimento de Software Multiplataforma</strong>
-          <span>FATEC / São José dos Campos · previsão 2028 · em andamento</span>
+          <div class="tl-icon">🎮</div>
+          <div class="tl-content">
+            <strong>DSM - Desenvolvimento de Software Multiplataforma</strong>
+            <span>FATEC / São José dos Campos</span>
+            <span>previsão 2028 · em andamento</span>
+          </div>
         </li>
         <li>
-          <strong>Gestão Pública</strong>
-          <span>UNINTER / São José dos Campos · 2020 · concluído</span>
+          <div class="tl-icon">🏛️</div>
+          <div class="tl-content">          
+          <div>
+            <strong>Gestão Pública</strong>
+            <span>UNINTER / São José dos Campos</span>
+            <span>2020 · concluído</span>
+          </div>
         </li>
         <li>
-          <strong>Engenharia de Produção Mecânica</strong>
-          <span>UNITAU / Taubaté · 2011 · concluído</span>
+          <div class="tl-icon">⚙️</div>
+          <div class="tl-content">                    
+          <div>
+            <strong>Engenharia de Produção Mecânica</strong>
+            <span>UNITAU / Taubaté</span>
+            <span>2011 · concluído</span>
+          </div>
         </li>
       </ul>
     </section>
 
     <!-- CURSOS -->
     <section id="cursos" class="section">
-      <h2 class="section-title">Cursos Complementares</h2>
+      <h2 class="section-title">CURSOS COMPLEMENTARES</h2>
       <!-- preenchido pelo JS -->
       <ul class="cursos-list" id="lista-cursos"></ul>
     </section>
 
+    <!-- MODAL CERTIFICADO -->
+    <div id="modal-overlay" class="modal-overlay" onclick="fecharModal()"></div>
+
+    <div id="modal-box" class="modal-box">
+      <button class="modal-fechar" onclick="fecharModal()">✕</button>
+      <img id="modal-img" src="" alt="Certificado">
+    </div>
+
     <!-- SKILLS -->
     <section id="skills" class="section">
-      <h2 class="section-title">Skills</h2>
+      <h2 class="section-title">SKILLS</h2>
 
       <div class="skills-wrap">
 
@@ -135,25 +172,32 @@
           <div class="skills-cards" id="lista-skills"></div>
         </div>
 
-      </div>
+      </div>  
 
       <!-- Carrossel -->
-      <h3 style="text-align:center; margin: 40px 0 16px;">Tecnologias</h3>
+      <h3 style="text-align:center; margin: 40px 0 16px;">TECNOLOGIAS</h3>
       <div class="carousel">
         <div class="carousel-track" id="carousel-track">
-          <div class="carousel-item"><img src="imagem/logos/Html.png" alt="HTML"><span>HTML</span></div>
-          <div class="carousel-item"><img src="imagem/logos/Css.png" alt="CSS"><span>CSS</span></div>
-          <div class="carousel-item"><img src="imagem/logos/JavaScript.png" alt="JavaScript"><span>JavaScript</span></div>
-          <div class="carousel-item"><img src="imagem/logos/python-logo.png" alt="Python"><span>Python</span></div>
-          <div class="carousel-item"><img src="imagem/logos/GitHub.png" alt="GitHub"><span>GitHub</span></div>
-          <div class="carousel-item"><img src="imagem/logos/Vercel.png" alt="Vercel"><span>Vercel</span></div>
+          <div class="carousel-item"><img src="imagem/logos/html-svg.svg" alt="HTML"><span>HTML</span></div>
+          <div class="carousel-item"><img src="imagem/logos/css-svg.svg" alt="CSS"><span>CSS</span></div>
+          <div class="carousel-item"><img src="imagem/logos/js-svg.svg" alt="JavaScript"><span>JavaScript</span></div>
+          <div class="carousel-item"><img src="imagem/logos/python-svg.svg" alt="Python"><span>Python</span></div>
+          <div class="carousel-item"><img src="imagem/logos/github-svg.svg" alt="GitHub"><span>GitHub</span></div>
+          <div class="carousel-item"><img src="imagem/logos/vercel-svg.svg" alt="Vercel"><span>Vercel</span></div>
           <!-- duplicados para loop infinito -->
-          <div class="carousel-item"><img src="imagem/logos/Html.png" alt="HTML"><span>HTML</span></div>
-          <div class="carousel-item"><img src="imagem/logos/Css.png" alt="CSS"><span>CSS</span></div>
-          <div class="carousel-item"><img src="imagem/logos/JavaScript.png" alt="JavaScript"><span>JavaScript</span></div>
-          <div class="carousel-item"><img src="imagem/logos/python-logo.png" alt="Python"><span>Python</span></div>
-          <div class="carousel-item"><img src="imagem/logos/GitHub.png" alt="GitHub"><span>GitHub</span></div>
-          <div class="carousel-item"><img src="imagem/logos/Vercel.png" alt="Vercel"><span>Vercel</span></div>
+          <div class="carousel-item"><img src="imagem/logos/html-svg.svg" alt="HTML"><span>HTML</span></div>
+          <div class="carousel-item"><img src="imagem/logos/css-svg.svg" alt="CSS"><span>CSS</span></div>
+          <div class="carousel-item"><img src="imagem/logos/js-svg.svg" alt="JavaScript"><span>JavaScript</span></div>
+          <div class="carousel-item"><img src="imagem/logos/python-svg.svg" alt="Python"><span>Python</span></div>
+          <div class="carousel-item"><img src="imagem/logos/github-svg.svg" alt="GitHub"><span>GitHub</span></div>
+          <div class="carousel-item"><img src="imagem/logos/vercel-svg.svg" alt="Vercel"><span>Vercel</span></div>
+          <!-- duplicados para loop infinito -->
+          <div class="carousel-item"><img src="imagem/logos/html-svg.svg" alt="HTML"><span>HTML</span></div>
+          <div class="carousel-item"><img src="imagem/logos/css-svg.svg" alt="CSS"><span>CSS</span></div>
+          <div class="carousel-item"><img src="imagem/logos/js-svg.svg" alt="JavaScript"><span>JavaScript</span></div>
+          <div class="carousel-item"><img src="imagem/logos/python-svg.svg" alt="Python"><span>Python</span></div>
+          <div class="carousel-item"><img src="imagem/logos/github-svg.svg" alt="GitHub"><span>GitHub</span></div>
+          <div class="carousel-item"><img src="imagem/logos/vercel-svg.svg" alt="Vercel"><span>Vercel</span></div>
         </div>
       </div>
 
@@ -161,7 +205,7 @@
 
     <!-- PROJETOS -->
     <section id="projetos" class="section">
-      <h2 class="section-title">Projetos</h2>
+      <h2 class="section-title">PROJETOS</h2>
 
       <div class="filtros-projetos">
         <button onclick="filtrarProjetos('todos', this)" class="ativo">Todos</button>
@@ -175,7 +219,7 @@
 
     <!-- CONTATO -->
     <section id="contato" class="section">
-      <h2 class="section-title">Contato</h2>
+      <h2 class="section-title">CONTATO</h2>
 
       <div class="social-grid">
         <a href="https://github.com/Costa-Wagner" target="_blank" class="social-btn">🐙 GitHub</a>
@@ -204,7 +248,10 @@
 
         <div id="form-feedback"></div>
 
-        <button type="submit">Enviar mensagem</button>
+        <button type="submit" style="padding: 8px 15px; font-size: 18px;">
+          Enviar mensagem
+        </button>
+
       </form>
 
     </section>

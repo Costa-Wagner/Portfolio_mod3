@@ -177,6 +177,7 @@ body::after {
   min-width: 260px;
   font-size: 11px;
   line-height: 2;
+  text-align: justify;
   color: #ccc;
 }
 
@@ -186,6 +187,7 @@ body::after {
 
 .contato-rapido {
   margin-top: 20px;
+  margin-bottom: 32px;
 }
 
 .contato-rapido a {
@@ -201,11 +203,27 @@ body::after {
   background: rgba(0,255,156,0.1);
 }
 
+.stats-row { display: flex; gap: 16px; flex-wrap: wrap; }
+.stat-box {
+  border: 2px solid var(--purple); padding: 14px 18px; text-align: center;
+  background: rgba(123,47,255,0.1); box-shadow: 3px 3px 0 var(--purple);
+  flex: 1; min-width: 80px; min-height: 80px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.stat-num {
+  font-family: var(--pixel); font-size: 16px;
+  color: var(--cyan); text-shadow: 0 0 8px var(--cyan); display: block;
+}
+.stat-label {
+  font-family: var(--mono); font-size: 11px;
+  color: rgba(232,216,255,0.5); margin-top: 5px; display: block;
+}
+
 /* ===========================================================================
    FORMAÇÃO / CURSOS
 =========================================================================== */
-.formacao-list,
-.cursos-list {
+.formacao-list {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -214,13 +232,98 @@ body::after {
   margin: auto;
 }
 
-.formacao-list li,
+.cursos-list {
+  display: flex;
+  flex-wrap: wrap;     /* Permite ficar lado a lado */
+  gap: 20px;
+  justify-content: center;
+  list-style: none;
+  padding: 20px;
+}
+
+.curso-card { /* O Card Individual */
+  background: #111;
+  border: 1px solid rgba(0, 255, 156, 0.3);
+  padding: 20px;
+  width: 320px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Empurra os botões para o final */
+  transition: 0.3s;
+}
+
+.curso-card .proj-actions { /* Alinhamento dos dois botões lado a lado */
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.formacao-list li:hover,
+.cursos-list li:hover {
+  transform: translateY(-5px);
+  border-color: #00ff9c;
+  box-shadow: 0 5px 15px rgba(0, 255, 156, 0.1);
+}
+
+.curso-info strong { color: #00ff9c; font-size: 12px; display: block; margin-bottom: 8px; } /* Estilo dos textos dentro do card */
+.curso-info h4 { font-size: 8px; color: #aaa; margin-bottom: 10px; }
+.curso-info p { font-size: 10px; color: #fff; line-height: 1.4; }
+
 .cursos-list li {
+  background: #111;
+  border: 1px solid rgba(0, 255, 156, 0.3);
+  padding: 25px;
+  width: 350px;
+  min-height: 280px;   /* Altura mínima para manter o padrão */
+  display: flex;
+  flex-direction: column; /* Texto em cima, botões embaixo */
+  justify-content: space-between;
+  align-items: flex-start; /* Alinha o texto à esquerda */
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.curso-info { /* Força o nome e a instituição a ficarem um embaixo do outro */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cursos-list .proj-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.curso-card .btn-proj {
+  flex: 1;             /* Faz os dois botões terem o mesmo tamanho */
+  font-size: 7px;
+  text-align: center;
+  padding: 10px 5px;
+  border: 1px solid #00ff9c;
+  color: #00ff9c;
+  text-decoration: none;
+}
+
+.formacao-list li{
   background: #111;
   border: 1px solid rgba(0,255,156,0.3);
   border-left: 3px solid #00ff9c;
   padding: 18px 20px;
   font-size: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.tl-icon{
+  font-size: 29px;
+  min-width: 84px;
+  text-align: center;
+  filter: drop-shadow(0 0 4px #00ff9c);  
 }
 
 .formacao-list span,
@@ -229,6 +332,68 @@ body::after {
   font-size: 9px;
   color: rgba(255,255,255,0.5);
   margin-top: 6px;
+}
+
+/* ════════ MODAL CERTIFICADO ════════ */
+.modal-overlay {
+  display: none; 
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.modal-overlay.aberto {
+    display: block;
+    opacity: 1;
+  }
+
+.modal-box {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  z-index: 2001;
+  background: var(--bg, #1a1a1a);
+  border: 2px solid var(--cyan, #00f0ff);
+  box-shadow: 0 0 30px var(--cyan, #00f0ff), 0 0 60px rgba(0,240,255,0.2);
+  padding: 10px;
+  width: 95%;
+  max-width: 780px;
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s;
+}
+
+.modal-box.aberto {
+  display: flex;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.modal-box img {
+  width: 100%;
+  border-radius: 12px;
+  border: 2px solid var(--purple);
+  box-shadow: 0 0 20px rgba(123,47,255,0.4);
+}
+
+.modal-fechar {
+  background: none;
+  border: none;
+  color: var(--pink);
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 6px;
+  transition: text-shadow .2s, transform .2s;
+}
+.modal-fechar:hover {
+  text-shadow: 0 0 10px var(--pink);
+  transform: scale(1.2);
 }
 
 /* ===========================================================================
@@ -311,13 +476,16 @@ body::after {
 .carousel {
   overflow: hidden;
   border: 2px solid #00ff9c;
-  padding: 16px 0;
+  background: transparent;
+  padding: 0px 0;
   position: relative;
 }
 
 .carousel-track {
   display: flex;
+  background: #c0f1be;
   width: max-content;
+  padding: 15px;
   animation: scroll 20s linear infinite;
 }
 
@@ -347,7 +515,7 @@ body::after {
   display: block;
   font-size: 8px;
   margin-top: 8px;
-  color: #ccc;
+  color: #020000;
 }
 
 @keyframes scroll {
@@ -411,7 +579,7 @@ body::after {
   margin-bottom: 8px;
 }
 
-.projeto-card h4 {
+.projeto-card h4, h5 {
   font-size: 8px;
   color: rgba(255,255,255,0.4);
   font-weight: normal;
@@ -547,13 +715,29 @@ body::after {
   margin-bottom: 20px;
 }
 
-.social-icons img {
-  width: 30px;
-  transition: transform 0.2s;
+/* Círculo branco ao redor dos ícones */
+.icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.social-icons img:hover {
-  transform: scale(1.2);
+.icon-circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(0, 255, 156, 0.5);
+}
+
+/* Remova o hover antigo da img e ajuste o tamanho */
+.social-icons img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .footer-info h3 {
