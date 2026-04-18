@@ -195,6 +195,9 @@ body::after {
 .contato-rapido {
   margin-top: 20px;
   margin-bottom: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .contato-rapido a {
