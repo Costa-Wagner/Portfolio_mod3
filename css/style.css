@@ -7,6 +7,13 @@
   box-sizing: border-box;
 }
 
+:root {
+  --purple: #7b2fff;
+  --cyan: #00ff9c;
+  --pixel: 'Press Start 2P', cursive;
+  --mono: 'Press Start 2P', cursive;
+}
+
 /* ===========================================================================
    GLOBAL
 =========================================================================== */
@@ -596,6 +603,13 @@ body::after {
   gap: 8px;
   flex-wrap: wrap;
   margin-top: 10px;
+}
+
+.proj-techs {
+  color: #00ff9c;
+  font-size: 7px;
+  margin-bottom: 10px;
+  opacity: 0.8;
 }
 
 .btn-proj {

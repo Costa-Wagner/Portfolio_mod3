@@ -7,11 +7,11 @@ let hora = agora.getHours();
 let mensagem = "";
 
 if (hora < 12) {
-  mensagem = "Bom dia! Seja bem-vindo ao meu portfólio.";
+  mensagem = "☀️ Bom dia! Seja bem-vindo ao meu portfólio.";
 } else if (hora < 18) {
-  mensagem = "Boa tarde! Seja bem-vindo ao meu portfólio.";
+  mensagem = "🌤️ Boa tarde! Seja bem-vindo ao meu portfólio.";
 } else {
-  mensagem = "Boa noite! Seja bem-vindo ao meu portfólio.";
+  mensagem = "🌙 Boa noite! Seja bem-vindo ao meu portfólio.";
 }
 
 document.getElementById("saudacao").innerText = mensagem;
@@ -51,6 +51,27 @@ const cursos = [
     link: "https://www.ev.org.br/cursos/linguagem-de-programacao-python-basico"
   }
 ];
+
+// ===== GERAR LISTA DE CURSOS =====
+// ② Repetição - percorre o array e cria um item para cada curso
+const listaCursos = document.getElementById("lista-cursos");
+
+for (let i = 0; i < cursos.length; i++) {
+  listaCursos.innerHTML += `
+    <li class="curso-card">
+      <div class="curso-info">
+        <strong>${cursos[i].nome} (${cursos[i].horas})</strong>
+        <h4>${cursos[i].instituicao} · ${cursos[i].ano}</h4>
+        <p>${cursos[i].descricao}</p>
+      </div>
+      
+      <div class="proj-actions">
+        <button onclick="abrirModal('${cursos[i].certificado}')" class="btn-proj">► Certificado</button>
+        <a href="${cursos[i].link}" target="_blank" class="btn-proj">► Site</a>
+      </div>
+    </li>
+  `;
+}
 
 /* ════════ MODAL CERTIFICADO ════════ */
 function abrirModal(src) {
@@ -93,27 +114,6 @@ function fecharModal() {
   }, 300);
 }
 
-// ===== GERAR LISTA DE CURSOS =====
-// ② Repetição - percorre o array e cria um item para cada curso
-const listaCursos = document.getElementById("lista-cursos");
-
-for (let i = 0; i < cursos.length; i++) {
-  listaCursos.innerHTML += `
-    <li class="curso-card">
-      <div class="curso-info">
-        <strong>${cursos[i].nome} (${cursos[i].horas})</strong>
-        <h4>${cursos[i].instituicao} · ${cursos[i].ano}</h4>
-        <p>${cursos[i].descricao}</p>
-      </div>
-      
-      <div class="proj-actions">
-        <button onclick="abrirModal('${cursos[i].certificado}')" class="btn-proj">► Certificado</button>
-        <a href="${cursos[i].link}" target="_blank" class="btn-proj">► Site</a>
-      </div>
-    </li>
-  `;
-}
-
 /* ===========================================================================
 SKILLS
 =========================================================================== */
@@ -151,16 +151,18 @@ const projetos = [
     descricao: "Portfólio pessoal desenvolvido com HTML, CSS, JavaScript e Python (Flask).",
     semestre: "1º sem. · FATEC",
     categoria: "academico",
+    tecnologias: ["HTML", "CSS", "FLASK"],
     link: "https://portfolio-wagner-nu.vercel.app/",
     github: "https://github.com/Costa-Wagner/portfolio"
   },
   {
     nome: "Projeto API — JanoSys",
     data: "dez/2025",
-    descricao: "Solução digital para facilitar a visualização e interpretação dos dados do CENSO 2010/2022. Atuei como Product Owner da equipe JanoSys.",
+    descricao: "Aprendizado por Projeto Integrador (API) - Solução digital para facilitar a visualização e interpretação dos dados do CENSO 2010/2022. Atuei como Product Owner da equipe JanoSys.",
     tipo: "API - Aprendizado por Projeto Integrador - Projeto Acadêmico",
     semestre: "1º sem. · FATEC",
     categoria: "api",
+    tecnologias: ["HTML", "CSS"],
     link: "https://janosysapi1.vercel.app/",
     github: "https://github.com/janosystime/Janosys-Project"
   },
@@ -170,6 +172,7 @@ const projetos = [
     descricao: "Site pessoal explorando conceitos de desenvolvimento web, UX e design digital.",
     semestre: "1º sem. · FATEC",
     categoria: "academico",
+    tecnologias: ["HTML", "CSS"],
     link: "https://ws-start-ten.vercel.app/",
     github: "https://github.com/Costa-Wagner/WS.start"
   }
@@ -193,6 +196,7 @@ function renderProjetos(filtro) {
           <h4>${projetos[i].data}</h4>
           <h5>${projetos[i].semestre}</h5>
           <p>${projetos[i].descricao}</p>
+          <p class="proj-techs">${projetos[i].tecnologias.join(" · ")}</p>
           <div class="proj-actions">
             <a href="${projetos[i].link}" target="_blank" class="btn-proj">► Ver projeto</a>
             <a href="${projetos[i].github}" target="_blank" class="btn-proj">► GitHub</a>
